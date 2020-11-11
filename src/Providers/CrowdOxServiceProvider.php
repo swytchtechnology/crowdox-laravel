@@ -1,10 +1,10 @@
-<?php namespace Huddle\Zendesk\Providers;
+<?php namespace edh649\CrowdOxLaravel\Providers;
 
-use Huddle\Zendesk\Services\NullService;
-use Huddle\Zendesk\Services\ZendeskService;
+use edh649\CrowdOxLaravel\Services\NullService;
+use edh649\CrowdOxLaravel\Services\CrowdOxService;
 use Illuminate\Support\ServiceProvider;
 
-class ZendeskServiceProvider extends ServiceProvider {
+class CrowdOxServiceProvider extends ServiceProvider {
 
     /**
      * Indicates if loading of the provider is deferred.
@@ -20,8 +20,8 @@ class ZendeskServiceProvider extends ServiceProvider {
      */
     public function register()
     {
-        $packageName = 'zendesk-laravel';
-        $configPath = __DIR__.'/../../config/zendesk-laravel.php';
+        $packageName = 'crowdox-laravel';
+        $configPath = __DIR__.'/../../config/crowdox-laravel.php';
 
         $this->mergeConfigFrom(
             $configPath, $packageName
@@ -33,19 +33,19 @@ class ZendeskServiceProvider extends ServiceProvider {
     }
 
     /**
-     * Bind service to 'zendesk' for use with Facade.
+     * Bind service to 'crowdox' for use with Facade.
      *
      * @return void
      */
     public function boot()
     {
-        $this->app->bind('zendesk', function () {
-            $driver = config('zendesk-laravel.driver', 'api');
+        $this->app->bind('crowdox', function () {
+            $driver = config('crowdox-laravel.driver', 'api');
             if (is_null($driver) || $driver === 'log') {
                 return new NullService($driver === 'log');
             }
 
-            return new ZendeskService;
+            return new CrowdOxService;
         });
     }
 }

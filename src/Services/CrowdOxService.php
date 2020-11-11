@@ -1,9 +1,9 @@
-<?php namespace Huddle\Zendesk\Services;
+<?php namespace edh649\CrowdOxLaravel\Services;
 
 use Config, InvalidArgumentException, BadMethodCallException;
-use Zendesk\API\HttpClient;
+use edh649\CrowdOx\CrowdOx;
 
-class ZendeskService {
+class CrowdOxService {
 
     /**
      * Get auth parameters from config, fail if any are missing.
@@ -12,14 +12,12 @@ class ZendeskService {
      * @throws Exception
      */
     public function __construct() {
-        $this->subdomain = config('zendesk-laravel.subdomain');
-        $this->username = config('zendesk-laravel.username');
-        $this->token = config('zendesk-laravel.token');
+        $this->username = config('CrowdOx-laravel.username');
+        $this->password = config('CrowdOx-laravel.password');
         if(!$this->subdomain || !$this->username || !$this->token) {
-            throw new InvalidArgumentException('Please set ZENDESK_SUBDOMAIN, ZENDESK_USERNAME and ZENDESK_TOKEN environment variables.');
+            throw new InvalidArgumentException('Please set CROWDOX_USERNAME and CROWDOX_PASSWORD environment variables.');
         }
-        $this->client = new HttpClient($this->subdomain, $this->username);
-        $this->client->setAuth('basic', ['username' => $this->username, 'token' => $this->token]);
+        $this->client = new CrowdOx($this->username, $this->password);
     }
 
     /**

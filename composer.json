@@ -1,34 +1,49 @@
 {
-    "name": "huddledigital/zendesk-laravel",
+    "name": "edh649/crowdox-laravel",
     "type": "library",
-    "description": "Laravel wrapper for zendesk/zendesk_api_client_php package",
-    "keywords": ["zendesk"],
-    "homepage": "http://workwithhuddle.com",
+    "description": "Laravel wrapper for edh649/crowdox package",
+    "keywords": [
+        "edh649",
+        "package",
+        "api",
+        "crowdox",
+        "crowdfund"
+    ],
+    "homepage": "https://github.com/edh649/crowdox_php",
+    "license": "MIT",
     "authors": [
         {
-            "name": "Huddle Digital Ltd",
-            "email": "info@workwithhuddle.com"
+            "name": ":Ed Hanton",
+            "email": "edh649@gmail.com",
+            "homepage": "https://github.com/edh649",
+            "role": "Developer"
         }
     ],
     "require": {
         "php": ">=5.4.0",
         "illuminate/support": "~5.4|^6.0|^7.0|^8.0",
-        "zendesk/zendesk_api_client_php": "2.*"
+        "edh649/crowdox": "9999999-dev"
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Huddle\\Zendesk\\Providers\\ZendeskServiceProvider"
+                "edh649\\CrowdOxLaravel\\Providers\\CrowdOxServiceProvider"
             ],
             "aliases": {
-                "Zendesk": "Huddle\\Zendesk\\Facades\\Zendesk"
+                "CrowdOx": "edh649\\CrowdOxLaravel\\Facades\\CrowdOxLaravel"
             }
         }
     },
     "autoload": {
         "psr-4": {
-            "Huddle\\Zendesk\\": "src"
+            "edh649\\CrowdOxLaravel\\": "src"
         }
     },
-    "minimum-stability": "stable"
+    "minimum-stability": "stable",
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../crowdox_php"
+        }
+    ]
 }

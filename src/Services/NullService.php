@@ -1,4 +1,4 @@
-<?php namespace Huddle\Zendesk\Services;
+<?php namespace edh649\CrowdOxLaravel\Services;
 
 use Illuminate\Support\Facades\Log;
 
@@ -17,7 +17,7 @@ class NullService {
     public function __call($name, $arguments)
     {
         if ($this->logCalls) {
-            Log::debug('Called Huddle Zendesk facade method: '.$name.' with:', $arguments);
+            Log::debug('Called CrowdOx facade method: '.$name.' with:', $arguments);
 
             return new self;
         }
