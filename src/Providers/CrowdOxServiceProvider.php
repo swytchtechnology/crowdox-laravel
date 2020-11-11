@@ -39,7 +39,7 @@ class CrowdOxServiceProvider extends ServiceProvider {
      */
     public function boot()
     {
-        $this->app->bind('crowdox', function () {
+        $this->app->singleton('crowdox', function () {
             $driver = config('crowdox-laravel.driver', 'api');
             if (is_null($driver) || $driver === 'log') {
                 return new NullService($driver === 'log');
