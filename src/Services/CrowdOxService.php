@@ -6,18 +6,28 @@ use edh649\CrowdOx\CrowdOx;
 class CrowdOxService {
 
     /**
+     * CrowdOx Client to use
+     *
+     * @var CrowdOx
+     */
+    protected $client = null;
+
+    /**
      * Get auth parameters from config, fail if any are missing.
      * Instantiate API client and set auth token.
      *
      * @throws Exception
      */
     public function __construct() {
-        $this->username = config('CrowdOx-laravel.username');
-        $this->password = config('CrowdOx-laravel.password');
-        if(!$this->subdomain || !$this->username || !$this->token) {
-            throw new InvalidArgumentException('Please set CROWDOX_USERNAME and CROWDOX_PASSWORD environment variables.');
+        if ($this->client === null)
+        {
+            $username = config('crowdox-laravel.username');
+            $password = config('crowdox-laravel.password');
+            if(!$username || !$password) {
+                throw new InvalidArgumentException('Please set CROWDOX_USERNAME and CROWDOX_PASSWORD environment variables');
+            }
+            $this->client = new CrowdOx($username, $password);
         }
-        $this->client = new CrowdOx($this->username, $this->password);
     }
 
     /**
