@@ -22,7 +22,7 @@
     "require": {
         "php": ">=5.4.0",
         "illuminate/support": "~5.4|^6.0|^7.0|^8.0",
-        "edh649/crowdox": "9999999-dev"
+        "edh649/crowdox": "^0.1.0"
     },
     "extra": {
         "laravel": {
@@ -38,12 +38,5 @@
         "psr-4": {
             "edh649\\CrowdOxLaravel\\": "src"
         }
-    },
-    "minimum-stability": "stable",
-    "repositories": [
-        {
-            "type": "path",
-            "url": "../crowdox_php"
-        }
-    ]
+    }
 }
