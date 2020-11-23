@@ -13,21 +13,30 @@ class CrowdOxService {
     protected $client = null;
 
     /**
-     * Get auth parameters from config, fail if any are missing.
-     * Instantiate API client and set auth token.
      *
      * @throws Exception
      */
     public function __construct() {
         if ($this->client === null)
         {
-            $username = config('crowdox-laravel.username');
-            $password = config('crowdox-laravel.password');
-            if(!$username || !$password) {
-                throw new InvalidArgumentException('Please set CROWDOX_USERNAME and CROWDOX_PASSWORD environment variables');
-            }
-            $this->client = new CrowdOx($username, $password);
+            $this->freshClient();
         }
+    }
+
+    /**
+     * Create a fresh client
+     * Get auth parameters from config, fail if any are missing.
+     * Instantiate API client and set auth token.
+     *
+     * @return void
+     */
+    public function freshClient() {
+        $username = config('crowdox-laravel.username');
+        $password = config('crowdox-laravel.password');
+        if(!$username || !$password) {
+            throw new InvalidArgumentException('Please set CROWDOX_USERNAME and CROWDOX_PASSWORD environment variables');
+        }
+        $this->client = new CrowdOx($username, $password);
     }
 
     /**
