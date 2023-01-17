@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Facade;
  * @method static \edh649\CrowdOx\Resources\States states()
  * @method static \edh649\CrowdOx\Resources\Projects projects()
  * @method static \edh649\CrowdOx\Resources\ProductVariations product_variations()
- * @method static \edh649\CrowdOx\Resources\OrderTransactions order_trgetValidResourcesansactions()
+ * @method static \edh649\CrowdOx\Resources\OrderTransactions order_transactions()
  * @method static \edh649\CrowdOx\Resources\OrderTags order_tags()
  * @method static \edh649\CrowdOx\Resources\OrderSelections order_selections()
  * @method static \edh649\CrowdOx\Resources\Orders orders()
